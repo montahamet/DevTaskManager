@@ -1,0 +1,128 @@
+﻿@model STAGE._2023.TEST.Entities.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+
+
+        @*<div class="card card-default">*@
+
+        <div class="card card-teal card-outline">
+            <div class="card-body box-profile">
+                <div style="width:150px;">
+                    <img class="profile-user-img img-fluid img-circle"
+                         src="~/uploads/@Model.ImageUrl"
+                         alt="User profile picture">
+
+                </div>
+
+                <h3 class="profile-username" @*text-center" *@> @Html.DisplayFor(model => model.FullName)</h3>
+
+                <p class="text-muted @*text-center*@">  @Html.DisplayFor(model => model.UserRole.Name)</p>
+
+            </div>
+
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-phone-alt mr-1"></i>Phone Number:</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Phone)
+                            </p>
+                        </div>
+
+                    </div>
+                    <!-- /.form-group -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-envelope mr-1"></i> Email:</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Email)</p>
+                        </div>
+                    </div>
+
+                    <!-- /.form-group -->
+                </div>
+                <hr>
+                <!-- /.col -->
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-user-alt mr-1"></i>  Login:</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Login)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- /.form-group -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-key mr-1"></i> Password:</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Password)</p>
+                        </div>
+
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <hr>
+
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-calendar-alt mr-1"></i> Date of Birth:</strong>
+                            @*<p class="text-muted"> @Html.DisplayFor(model => model.GetBirthDate("dd/MM/yyyy"))</p>*@
+                            <p class="text-muted"> @Model.GetBirthDate("dd/MM/yyyy")</p>
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-calendar-alt mr-1"></i> Date of Creation:</strong>
+                            @*<p class="text-muted"> @Html.DisplayFor(model => model.GetCreationDate("dd/MM/yyyy"))</p>*@
+                            <p class="text-muted"> @Model.CreationDate.ToString("dd/MM/yyyy")</p>
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-default bg-teal   float-right" href='@Url.Action("Edit", "User", new { id = @Model.Id })'>
+                            <i class="fas fa-user-edit"></i>
+                            Edit
+                        </a>
+
+                        <a class="btn btn-danger  float-left" href='@Url.Action("Index", "User")'>
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </a>
+
+
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+</section>

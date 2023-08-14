@@ -1,0 +1,203 @@
+﻿@model STAGE._2023.TEST.Models.ProjectViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<section class="content-header">
+    <br />
+    <br />
+    <div class="container-fluid">
+    @*<div class="card card-default">*@
+
+    <div class="card card-teal card-outline">
+        <div class="card-body box-profile">
+            <br />
+            <h2 class="card-title">Project details</h2>
+            </br>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                            <i class="fa fa-info"></i>
+                        <strong>
+                            Project ID :
+                        </strong>
+
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.id_project)
+                        </p>
+
+
+                    </div>
+
+                </div>
+                <!-- /.form-group -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <i class="fas fa-parking"></i>
+                        <strong>Project Name:</strong>
+
+                        <p class="text-muted">@Html.DisplayFor(model => model.project_name)</p>
+
+                    </div>
+                </div>
+
+                <!-- /.form-group -->
+            </div>
+
+            <hr>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                         <i class="nav-icon fas fa-copy"></i>
+
+                        <strong>Project Module:</strong>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.project_module)
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- /.form-group -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <i class="fa fa-circle"></i>
+                        <strong>Project Version: </strong>
+                        <p class="text-muted"> @Html.DisplayFor(model => model.project_version)</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <i class="fa fa-flag"> </i>
+                            
+                        <strong>
+                            Project Status:
+                        </strong>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.StatusProject_name)
+                        </p>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <i class="nav-icon fas fa-edit"></i>
+                        <strong>
+                            Description:
+                        </strong>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.project_description)
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr />
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>
+                                <i class="fa fa-user"></i>
+                            Project Leader:
+                        </strong>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.project_leader)
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <strong>
+                                <i class="fa fa-calculator"></i>
+                            Project Estimated Budget:
+                        </strong>
+                        <p class="text-muted">
+                            @Html.DisplayFor(model => model.project_estimated_budget)
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+                <hr />
+                <br>
+         
+            <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <i class="fa fa-credit-card"> </i>
+
+                            <strong>
+                                Project Total Amount:
+                            </strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.project_total_amount)
+                            </p>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <i class="far fa-calendar-alt"></i>
+                            <strong>
+                                Project Estimated Duration:
+                            </strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.project_estimated_duration)
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr />
+
+            
+            <div class="row">
+                <div class="col-12">
+                </div>
+                <div class="col-12">
+                    <a class="btn btn-default bg-teal float-right" href='@Url.Action("Edit", "Project", new { id = @Model.id_project })'>
+                        <i class="fas fa-user-edit"></i>
+                        Edit
+                    </a>
+
+                    <a class="btn btn-danger  float-left" href='@Url.Action("Index", "Project")'>
+                        <i class="fas fa-arrow-left"></i>
+                        Back
+                    </a>
+
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+</section>

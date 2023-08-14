@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\STAGE.2023.TEST.DataLayer.DB\STAGE.2023.TEST.DataLayer.DB.csproj" />
+		<ProjectReference Include="..\STAGE.2023.TEST.Entities\STAGE.2023.TEST.Entities.csproj" />
+		<ProjectReference Include="..\STAGE.2023.TEST.Repository\STAGE.2023.TEST.Repository.csproj" />
+		<ProjectReference Include="..\STAGE.2023.TEST.Utils\STAGE.2023.TEST.Utils.csproj" />
+	</ItemGroup>
+
+</Project>

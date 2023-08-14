@@ -1,0 +1,194 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+<!-- fullCalendar -->
+<link rel="stylesheet" href="~/plugins/fullcalendar/main.css">
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>150</h3>
+
+                <p>Add Tasks</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-tasks"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>5</h3>
+
+                <p>Add Module</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-book"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>6</h3>
+
+                <p>Add User</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="/User/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>12</h3>
+
+                <p>Add Project</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-plus"></i>
+            </div>
+            <a href="/Project/index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+<!-- /.row -->
+<!-- TO DO List -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="ion ion-clipboard mr-1"></i>
+            To Do List
+        </h3>
+
+        <div class="card-tools">
+            <ul class="pagination pagination-sm">
+                <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                <li class="page-item"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <ul class="todo-list" data-widget="todo-list">
+            <li>
+                <!-- drag handle -->
+                <span class="handle">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+                <!-- checkbox -->
+                <div class="icheck-primary d-inline ml-2">
+                    <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                    <label for="todoCheck1"></label>
+                </div>
+                <!-- todo text -->
+                <span class="text">WELLNESS:Ajout Ecran societe MyHotixWellness</span>
+                <!-- Emphasis label -->
+                <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                <!-- General tools such as edit or delete-->
+                <div class="tools">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash-o"></i>
+                </div>
+            </li>
+            <li>
+                <span class="handle">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+                <div class="icheck-primary d-inline ml-2">
+                    <input type="checkbox" value="" name="todo2" id="todoCheck2" checked>
+                    <label for="todoCheck2"></label>
+                </div>
+                <span class="text">HNGAPI:Correct prob + lancement script +  mise a jour derniere version v0 / Royal Hammamet</span>
+                <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                <div class="tools">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash-o"></i>
+                </div>
+            </li>
+            <li>
+                <span class="handle">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+                <div class="icheck-primary d-inline ml-2">
+                    <input type="checkbox" value="" name="todo3" id="todoCheck3">
+                    <label for="todoCheck3"></label>
+                </div>
+                <span class="text">HNG.Import.DATA:Install Import data chez Bel Azur + importer VH depuis date 01/01/2023</span>
+                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                <div class="tools">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash-o"></i>
+                </div>
+            </li>
+            <li>
+                <span class="handle">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+                <div class="icheck-primary d-inline ml-2">
+                    <input type="checkbox" value="" name="todo4" id="todoCheck4">
+                    <label for="todoCheck4"></label>
+                </div>
+                <span class="text">HNG.Send.Reports:Create new windows service HNG.SEND.REPORTS</span>
+                <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                <div class="tools">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash-o"></i>
+                </div>
+            </li>
+            <li>
+                <span class="handle">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+                <div class="icheck-primary d-inline ml-2">
+                    <input type="checkbox" value="" name="todo5" id="todoCheck5">
+                    <label for="todoCheck5"></label>
+                </div>
+                <span class="text">HNG.STOCK:Ajout code depot sous Ecran frmDefDepot + update </span>
+                <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                <div class="tools">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash-o"></i>
+                </div>
+            </li>
+            <li>
+                <span class="handle">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </span>
+                <div class="icheck-primary d-inline ml-2">
+                    <input type="checkbox" value="" name="todo6" id="todoCheck6">
+                    <label for="todoCheck6"></label>
+                </div>
+                <span class="text">HNG.STOCK:Ecran Facture frs , modifier le montant HT , TTC</span>
+                <small class="badge badge-secondary"><i class="far fa-clock"></i> 1 month</small>
+                <div class="tools">
+                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-trash-o"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

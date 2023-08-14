@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\STAGE.2023.TEST.Entities\STAGE.2023.TEST.Entities.csproj" />
+	</ItemGroup>
+
+</Project>
+

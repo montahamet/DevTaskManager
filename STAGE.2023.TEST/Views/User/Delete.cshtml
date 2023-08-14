@@ -1,0 +1,17 @@
+﻿@model STAGE._2023.TEST.Entities.User
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="modal-title">Delete </h1>
+
+
+<h3>Are you sure you want to delete this?</h3>
+
+
+<form asp-action="Delete">
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    @*<a asp-action="Index">Back to List</a>*@
+    <input asp-action="Index" type="submit" value="Back to List" class="btn btn-primary" />
+</form>

@@ -1,0 +1,91 @@
+﻿@model IEnumerable<STAGE._2023.TEST.Entities.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>User List</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="User" asp-action="Create" class="btn btn-default bg-info  mb-3" style="width:auto">Add User</a></li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-body pb-0">
+
+            <div class="row">
+                @foreach (var user in Model)
+                {
+                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                        <div class="card bg-light d-flex flex-fill">
+
+
+                            <div class="card-header text-muted border-bottom-0">
+                                @Html.DisplayFor(modelItem => user.UserRole.Name)
+                            </div>
+                            <div class="card-body pt-0">
+
+                                <div class="row">
+                                    <div class="col-7">
+                                        <h2 class="lead"><b> @Html.DisplayFor(modelItem => user.FullName)</b></h2>
+                                        <p class="text-muted text-sm"> <b>Address:</b> @Html.DisplayFor(modelItem => user.Email) </p>
+                                        <ul class="ml-4 mb-0 fa-ul text-muted">
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-calendar"></i></span>Date of Birth: @user.GetBirthDate("dd/MM/yyyy")</li>
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Phone :@Html.DisplayFor(modelItem => user.Phone)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-5 text-center">
+                                        <img src="~/uploads/@user.ImageUrl" alt="user-avatar" class="img-circle img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="text-right">
+
+                                    <a class="btn btn-sm bg-gradient-teal" href='@Url.Action("Edit", "User", new { id = @user.Id })'>
+                                        <i class="fas fa-user-edit"></i>
+                                    </a>
+                                    <a class="btn btn-sm bg-danger" , href='@Url.Action("Delete", "User", new { id = @user.Id })'>
+                                        <i class="fas fa-user-times"></i>
+                                    </a>
+                                    <a class="btn btn-sm bg-blue" href='@Url.Action("Details", "User", new { id = @user.Id })'>
+
+                                        <i class="fas fa-user">Details</i>
+
+
+
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+        <!-- /.card-body -->
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+
+</section>
+<!-- /.content -->

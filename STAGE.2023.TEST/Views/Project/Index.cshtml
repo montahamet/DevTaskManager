@@ -1,0 +1,167 @@
+﻿@model STAGE._2023.TEST.Models.ProjectViewModel
+
+
+@{
+    ViewData["Title"] = "Index";
+
+} 
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+
+            <div class="col-sm-12">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Project" asp-action="Add" class="btn btn-default bg-info  mb-3" style="width:auto">Add Project</a></li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+
+<section class="content">
+
+    <div class="card card-teal">
+        <div class="card-header">
+            <h3 class="card-title">PROJECTS LIST</h3>
+
+        </div>
+        <br />
+        <div class="card-body p-0">
+
+            <table id="example1" class="table table-striped projects">
+
+
+                <thead>
+                    <tr>
+                        <th style="width: 10%">
+                            Project Name
+                        </th>
+
+                        <th style="width: 10%">
+                            Module
+                        </th>
+
+                        <th style="width:10%">
+                            Version
+                        </th>
+
+                        <th style="width: 10%">
+                            Description
+                        </th>
+
+                        <th style="width: 10%">
+                            Project Leader
+                        </th>
+                        <th style="width: 10%">
+                            Estimated Budget
+                        </th>
+                        <th style="width: 10%">
+                            Total Amount
+                        </th>
+                        <th style="width: 10%">
+                            Estimated Duration
+                        </th>
+                        <th style="width:10%">
+                            Status
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Projects)
+                    {
+                        <tr>
+                            <td>@item.project_name</td>
+                            <td>@item.project_module</td>
+                            <td>@item.project_version</td>
+                            <td>@item.project_description</td>
+                            <td>@item.project_leader</td>
+                            <td>@item.project_estimated_budget</td>
+                            <td>@item.project_total_amount</td>
+                            <td>@item.project_estimated_duration</td>
+                            <td>@item.StatusProject.StatusProject_name</td>
+
+
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" href='@Url.Action("Details", "Project", new { id_project = @item.id_project })'>
+                                    <i class="fas fa-eye">
+                                    </i>
+                                    Details
+                                </a>
+
+                                <a class="btn btn-info btn-sm" href='@Url.Action("Edit", "Project", new { id_project = @item.id_project })'>
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Edit
+                                </a>
+                                <a href="" onclick="Delete('@item.id_project')" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash"> </i>
+                                    Delete
+                                </a>
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Page specific script -->
+@section Scripts {
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": false, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        });
+    </script>
+}
+
+
+<script>
+    $(function () {
+        $('#example5').DataTable();
+    });
+    function Delete(id_project) {
+        var txt;
+        var r = confirm("Are you sure you want to Delete?");
+        if (r == true) {
+
+            $.ajax(
+                {
+                    type: "POST",
+                    url: '@Url.Action("Delete", "Project")',
+                    data: {
+                        id_project: id_project
+                    },
+
+                    success: function (result) {
+                        if (result == true) {
+                            // Supprimer l'élément de la table DataTable
+                            //$('#example5').DataTable().row($('#' + id_parc).parents('tr')).remove().draw();
+                            var baseUrl = "/Project";
+                            window.location.href = baseUrl;
+                        } else {
+                            alert("There is a problem, Try Later!");
+                        }
+                    },
+
+                    error: function (result) {
+                        alert("error");
+                    }
+                });
+        }
+    }
+</script>
