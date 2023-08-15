@@ -214,7 +214,9 @@ namespace STAGE._2023.TEST.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                      
+                        command.Parameters.Add("@id_project", SqlDbType.Int);
+                        command.Parameters["@id_project"].Value = project.id_project;
+
 
                         command.Parameters.Add("@project_name", SqlDbType.VarChar);
                         command.Parameters["@project_name"].Value = project.project_name;
@@ -242,7 +244,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
                         command.Parameters["@project_estimated_duration"].Value = project.project_estimated_duration;
 
                         command.Parameters.Add("@id_StatusProject", SqlDbType.Int);
-                        command.Parameters["@id_StatusProject"].Value = project.id_StatusProject;
+                        command.Parameters["@id_StatusProject"].Value = project.StatusProject.id_StatusProject;
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -299,9 +301,9 @@ namespace STAGE._2023.TEST.DataLayer.DB
                         command.Parameters["@project_estimated_duration"].Value = project.project_estimated_duration;
 
                         command.Parameters.Add("@id_StatusProject", SqlDbType.Int);
-                        command.Parameters["@id_StatusProject"].Value = project.id_StatusProject;
+                        command.Parameters["@id_StatusProject"].Value = project.StatusProject.id_StatusProject;
 
-                        
+
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();

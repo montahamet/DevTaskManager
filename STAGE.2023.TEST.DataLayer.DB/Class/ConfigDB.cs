@@ -754,6 +754,9 @@ namespace STAGE._2023.TEST.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
+                        command.Parameters.Add("@id_StatusProject", SqlDbType.Int);
+                        command.Parameters["@id_StatusProject"].Value = statusproject.id_StatusProject;
+
                         command.Parameters.Add("@StatusProject_name", SqlDbType.VarChar);
                         command.Parameters["@StatusProject_name"].Value = statusproject.StatusProject_name;
 

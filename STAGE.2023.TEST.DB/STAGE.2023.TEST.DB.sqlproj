@@ -102,6 +102,12 @@
     <Build Include="dbo\Stored Procedures\sp_user_role_get_one_by_id.sql" />
     <Build Include="dbo\Stored Procedures\sp_user_update.sql" />
     <Build Include="dbo\Tables\def_status_project.sql" />
+    <Build Include="dbo\Tables\def_module.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_get_all.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_get_one_by_name.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_insert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_update.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="STAGE.2023.TEST.DB.publish.xml" />

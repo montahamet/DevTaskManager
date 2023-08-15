@@ -8,8 +8,9 @@ namespace STAGE._2023.TEST.DataLayer
 {
     public interface IModule
 {
-        IEnumerable<Entities.Module> GetAll(int id_project);
-        Entities.Module GetOne(string module_name);
+        IEnumerable<Entities.Module> GetAll(int module_id);
+        Entities.Module GetOneByID(int module_id);
+        Entities.Module GetOneByName(string module_name);
 
 
         bool Add(Entities.Module module);

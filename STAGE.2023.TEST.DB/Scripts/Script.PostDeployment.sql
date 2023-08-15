@@ -73,3 +73,11 @@ BEGIN
 		(1, 'CHANNEL_MANAGER','Myhotix' , '3.2.0' , 'NONE' ,'Boudagga Marwen','333844','584466','3months',1)
 		
 END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.[def_module] )
+BEGIN
+	INSERT INTO dbo.[def_module]([dev_task_id],[module_name],[id_project] ,[id_TypeDev] ,[module_details],[posting_date],[posted_by],[due_date],[id_PriorityDev],[id_StatusDev],[user_id],[module_notes])
+	VALUES 
+		(1, 'MyHotix',1,3,'D_EDGE','14082023','MB','17092023',4,2,2,'None')
+		
+END

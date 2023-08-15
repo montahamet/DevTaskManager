@@ -19,18 +19,18 @@ namespace STAGE._2023.TEST.Models
         
         public int id_project { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         public string project_name { get; set; }
 
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         public string project_module { get; set; }
 
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         public string project_version { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         public string project_description { get; set; }
 
         [Required]

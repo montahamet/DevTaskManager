@@ -36,6 +36,9 @@
                 <thead>
                     <tr>
                         <th style="width: 10%">
+                            Project ID
+                        </th>
+                        <th style="width: 10%">
                             Project Name
                         </th>
 
@@ -74,6 +77,7 @@
                     @foreach (var item in Model.Projects)
                     {
                         <tr>
+                            <td>@item.id_project</td>
                             <td>@item.project_name</td>
                             <td>@item.project_module</td>
                             <td>@item.project_version</td>
