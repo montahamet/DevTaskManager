@@ -8,7 +8,7 @@ namespace STAGE._2023.TEST.DataLayer
 {
     public interface IDevTask
 {
-        IEnumerable<Entities.DevTask> GetAll(int dev_task_id);
+        IEnumerable<Entities.DevTask> GetAll(int ModID, int ProjID);
         Entities.DevTask GetOneByID(int dev_task_id);
         Entities.DevTask GetOneByProjectName(string project_name);
 

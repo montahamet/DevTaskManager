@@ -4,10 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STAGE._2023.TEST.Entities.Enumeration
+namespace STAGE._2023.TEST.Entities
 {
     public static class Enumeration
     {
+        public enum Langue
+        {
+            AR = 1,
+            FR,
+            EN
+        }
         public enum UserRole
         {
             ADMIN = 1,

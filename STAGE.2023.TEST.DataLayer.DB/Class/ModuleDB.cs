@@ -25,7 +25,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
         }
         #endregion
 
-        public IEnumerable<Module> GetAll(int module_id)
+        public IEnumerable<Entities.Module> GetAll()
         {
             Entities.Modules Ret = new Entities.Modules();
             SqlDataReader DR = null;
@@ -38,8 +38,8 @@ namespace STAGE._2023.TEST.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add("module_id", SqlDbType.Int);
-                        command.Parameters["module_id"].Value = module_id;
+                        command.Parameters.Add("@module_id", SqlDbType.Int);
+                        command.Parameters["@module_id"].Value = -1;
 
                         conn.Open();
                         DR = command.ExecuteReader();
@@ -78,7 +78,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
                 }
             }
         }
-        public Module GetOneByID(int module_id)
+        public Entities.Module GetOneByID(int module_id)
         {
             Entities.Module Ret = null;
             SqlDataReader DR = null;
@@ -131,7 +131,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
             }
         }
 
-        public Module GetOneByName(string module_name)
+        public Entities.Module GetOneByName(string module_name)
         {
             Entities.Module Ret = null;
             SqlDataReader DR = null;
@@ -182,7 +182,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
                 }
             }
         }
-        public bool Add(Module module)
+        public bool Add(Entities.Module module)
         {
             int Ret = -1;
 
@@ -215,7 +215,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
         }
 
 
-        public bool Update(Module module)
+        public bool Update(Entities.Module module)
         {
             int Ret = -1;
 
@@ -247,7 +247,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
             }
         }
 
-        public bool Remove(Module module)
+        public bool Remove(Entities.Module module)
         {
             int Ret = -1;
 

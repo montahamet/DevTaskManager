@@ -8,7 +8,7 @@ namespace STAGE._2023.TEST.DataLayer
 {
     public interface IProject
 {
-        IEnumerable<Entities.Project> GetAll();
+        IEnumerable<Entities.Project> GetAll(int ModID);
 
         Entities.Project Getone(int id_project);
 

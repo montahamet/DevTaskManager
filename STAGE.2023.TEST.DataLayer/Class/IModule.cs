@@ -8,7 +8,7 @@ namespace STAGE._2023.TEST.DataLayer
 {
     public interface IModule
 {
-        IEnumerable<Entities.Module> GetAll(int module_id);
+        IEnumerable<Entities.Module> GetAll();
         Entities.Module GetOneByID(int module_id);
         Entities.Module GetOneByName(string module_name);
 

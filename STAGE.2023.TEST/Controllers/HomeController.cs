@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using STAGE._2023.TEST.Entities;
 using STAGE._2023.TEST.Models;
 using System;
 using System.Collections.Generic;
@@ -20,6 +24,14 @@ namespace STAGE._2023.TEST.Controllers
 
         public IActionResult Index()
         {
+
+            //Modules _Modules = Repository.Module.GetAll();
+
+            //if (_Modules != null)
+            //{ 
+            //    HttpContext.Session.SetString("Modules", JsonConvert.SerializeObject(_Modules));
+            //} 
+
             return View("Index_H");
         }
 
@@ -29,7 +41,7 @@ namespace STAGE._2023.TEST.Controllers
         }
 
         
-        public IActionResult Modules()
+        public IActionResult Module()
         {
             return View();
         }

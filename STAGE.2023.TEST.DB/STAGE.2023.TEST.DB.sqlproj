@@ -62,12 +62,21 @@
     <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\app_user.sql" />
-    <Build Include="dbo\Tables\def_priority_dev.sql" />
-    <Build Include="dbo\Tables\def_project.sql" />
-    <Build Include="dbo\Tables\def_status_dev.sql" />
-    <Build Include="dbo\Tables\def_type_dev.sql" />
-    <Build Include="dbo\Tables\def_user_role.sql" />
+    <None Include="STAGE.2023.TEST.DB.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Stored Procedures\sp_dev_task_delete.sql" />
+    <Build Include="dbo\Stored Procedures\sp_dev_task_get_all.sql" />
+    <Build Include="dbo\Stored Procedures\sp_dev_task_get_one_by_id.sql" />
+    <Build Include="dbo\Stored Procedures\sp_dev_task_get_one_by_name.sql" />
+    <Build Include="dbo\Stored Procedures\sp_dev_task_insert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_dev_task_update.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_delete.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_get_all.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_get_one_by_id.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_get_one_by_name.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_insert.sql" />
+    <Build Include="dbo\Stored Procedures\sp_module_update.sql" />
     <Build Include="dbo\Stored Procedures\sp_prioritydev_delete.sql" />
     <Build Include="dbo\Stored Procedures\sp_prioritydev_get_all.sql" />
     <Build Include="dbo\Stored Procedures\sp_prioritydev_get_one_by_id.sql" />
@@ -101,16 +110,15 @@
     <Build Include="dbo\Stored Procedures\sp_user_role_get_all.sql" />
     <Build Include="dbo\Stored Procedures\sp_user_role_get_one_by_id.sql" />
     <Build Include="dbo\Stored Procedures\sp_user_update.sql" />
-    <Build Include="dbo\Tables\def_status_project.sql" />
+    <Build Include="dbo\Tables\app_user.sql" />
+    <Build Include="dbo\Tables\def_dev_task.sql" />
     <Build Include="dbo\Tables\def_module.sql" />
-    <Build Include="dbo\Stored Procedures\sp_module_get_all.sql" />
-    <Build Include="dbo\Stored Procedures\sp_module_get_one_by_name.sql" />
-    <Build Include="dbo\Stored Procedures\sp_module_insert.sql" />
-    <Build Include="dbo\Stored Procedures\sp_module_update.sql" />
-    <Build Include="dbo\Stored Procedures\sp_module_delete.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="STAGE.2023.TEST.DB.publish.xml" />
+    <Build Include="dbo\Tables\def_priority_dev.sql" />
+    <Build Include="dbo\Tables\def_project.sql" />
+    <Build Include="dbo\Tables\def_status_dev.sql" />
+    <Build Include="dbo\Tables\def_status_project.sql" />
+    <Build Include="dbo\Tables\def_type_dev.sql" />
+    <Build Include="dbo\Tables\def_user_role.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />

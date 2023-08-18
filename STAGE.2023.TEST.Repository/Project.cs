@@ -19,10 +19,10 @@ namespace STAGE._2023.TEST.Repository
             Project_DL = new ProjectDB();
         }
 
-        public static Entities.Projects GetAll()
+        public static Entities.Projects GetAll(int ModID)
         {
             return (Project_DL != null)
-                   ? new Entities.Projects(Project_DL.GetAll())
+                   ? new Entities.Projects(Project_DL.GetAll(ModID))
                    : null;
         }
 

@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Modules\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\STAGE.2023.TEST.DataLayer.DB\STAGE.2023.TEST.DataLayer.DB.csproj" />
     <ProjectReference Include="..\STAGE.2023.TEST.Entities\STAGE.2023.TEST.Entities.csproj" />
     <ProjectReference Include="..\STAGE.2023.TEST.Repository\STAGE.2023.TEST.Repository.csproj" />

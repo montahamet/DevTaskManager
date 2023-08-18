@@ -6,11 +6,29 @@
 
 @{
     STAGE._2023.TEST.Entities.User curUser = null;
-    string strUser = HttpContextAccessor.HttpContext.Session.GetString("User");
-
-    if (!string.IsNullOrEmpty(strUser))
+    STAGE._2023.TEST.Entities.Modules myModules = null;
+    try
     {
-        curUser = Newtonsoft.Json.JsonConvert.DeserializeObject<STAGE._2023.TEST.Entities.User>(strUser);
+        string strUser = HttpContextAccessor.HttpContext.Session.GetString("User");
+
+        if (!string.IsNullOrEmpty(strUser))
+        {
+            curUser = Newtonsoft.Json.JsonConvert.DeserializeObject<STAGE._2023.TEST.Entities.User>(strUser);
+        }
+
+        myModules = STAGE._2023.TEST.Repository.Module.GetAll();
+
+        //STAGE._2023.TEST.Entities.Modules myModules = null;
+        //string strModules = HttpContextAccessor.HttpContext.Session.GetString("Modules");
+
+        //if (!string.IsNullOrEmpty(strModules))
+        //{
+        //    myModules = Newtonsoft.Json.JsonConvert.DeserializeObject<STAGE._2023.TEST.Entities.Modules>(strModules);
+        //}
+    }
+    catch (Exception ex)
+    {
+        string strEx = ex.Message;
     }
 }
 
@@ -137,8 +155,7 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
+
                         <li class="nav-item">
                             <a class="nav-link" href='@Url.Action("Index", "Home")'>
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -152,75 +169,44 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href='@Url.Action("Modules", "Home")'>
+                            <a class="nav-link" href="#">
                                 <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Modules
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
+                                <p> Module <i class="fas fa-angle-left right"></i></p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/forms/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>MyHotix</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/advanced.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>MyHotix Hospitality</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/editors.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>MyHotix News</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/validation.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>HH</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/forms/validation.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>HNG</p>
-                                    </a>
-                                </li>
+
+                            @if (myModules != null)
+                            {
+                                foreach (var item in myModules)
+                                {
+                                    <ul class="nav nav-treeview">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href='@Url.Action("Index", "Module", new { ModID = @item.module_id, ProjID = -1})'>
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>@item.module_name</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                }
+                            }
+
                         </li>
+
                         <li class="nav-item">
                             <a href="pages/forms/validation.html" class="nav-link">
                                 <i class="far fa fa-plus nav-icon"></i>
                                 <p>Module Add</p>
                             </a>
                         </li>
-
-                        <li class="nav-item">
-                            <a href="pages/forms/validation.html" class="nav-link">
-                                <i class="far fas fa-tools nav-icon"></i>
-                                <p>Module Edit</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="pages/forms/validation.html" class="nav-link">
-                                <i class="far fa fa-trash nav-icon"></i>
-                                <p>Module Delete</p>
-                            </a>
-                        </li>
+         
+                         <li class="nav-item">
+                            <a class="nav-link" href='@Url.Action("Index", "Project", new { ModID = -1})'>
+                                 <i class="nav-icon fas fa-edit"></i>
+                                 <p> Projects </p>
+                             </a>
+                         </li>
                     </ul>
-                    <li class="nav-item">
-                        <a class="nav-link" href='@Url.Action("Index", "Project")'>
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p> Projects </p>
-                        </a>
-                    </li>
 
 
-                    
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

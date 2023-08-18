@@ -19,10 +19,12 @@ namespace STAGE._2023.TEST.DataLayer.DB
         {
             id_project = 0,
             project_name,
-            project_module,
+            module_id,
+            module_name,
             project_version,
             project_description,
-            project_leader,
+            user_id,
+            full_name,
             project_estimated_budget,
             project_total_amount,
             project_estimated_duration,
@@ -31,7 +33,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
         }
 
         #endregion
-        public IEnumerable<Project> GetAll()
+        public IEnumerable<Project> GetAll(int ModID)
         {
             Entities.Projects Ret = new Entities.Projects();
             SqlDataReader DR = null;
@@ -44,8 +46,9 @@ namespace STAGE._2023.TEST.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure; 
 
-                        command.Parameters.Add("@id_project", SqlDbType.Int);
-                        command.Parameters["@id_project"].Value = -1;
+                        command.Parameters.Add("@mod_id", SqlDbType.Int);
+                        command.Parameters["@mod_id"].Value = ModID;
+
                         conn.Open();
                         DR = command.ExecuteReader();
 
@@ -54,26 +57,32 @@ namespace STAGE._2023.TEST.DataLayer.DB
                             Ret.Add(new Entities.Project()
                             {
                                 id_project = (!DR.IsDBNull((int)enumQryProjectFields.id_project))
-                                            ? Convert.ToInt32(DR[(int)enumQryProjectFields.id_project])
-                                            : 0,
+                                             ? Convert.ToInt32(DR[(int)enumQryProjectFields.id_project])
+                                             : 0,
                                 project_name = (!DR.IsDBNull((int)enumQryProjectFields.project_name))
-                                              ? DR[(int)enumQryProjectFields.project_name].ToString().Trim()
-                                              : string.Empty,
-                                project_module = (!DR.IsDBNull((int)enumQryProjectFields.project_module))
-                                              ? DR[(int)enumQryProjectFields.project_module].ToString().Trim()
-                                              : string.Empty,
-
+                                               ? DR[(int)enumQryProjectFields.project_name].ToString().Trim()
+                                               : string.Empty,
+                                Module = new Module()
+                                { 
+                                    module_id = Convert.ToInt32(DR[(int)enumQryProjectFields.module_id]),
+                                    module_name = (!DR.IsDBNull((int)enumQryProjectFields.module_name))
+                                                  ? DR[(int)enumQryProjectFields.module_name].ToString().Trim()
+                                                  : string.Empty, 
+                                }, 
                                 project_version = (!DR.IsDBNull((int)enumQryProjectFields.project_version))
                                             ? DR[(int)enumQryProjectFields.project_version].ToString().Trim()
                                             : string.Empty,
 
                                 project_description = (!DR.IsDBNull((int)enumQryProjectFields.project_description))
                                               ? DR[(int)enumQryProjectFields.project_description].ToString().Trim()
-                                              : string.Empty,
-
-                                project_leader = (!DR.IsDBNull((int)enumQryProjectFields.project_leader))
-                                              ? DR[(int)enumQryProjectFields.project_leader].ToString().Trim()
-                                             : string.Empty,
+                                              : string.Empty, 
+                                User = new User()
+                                { 
+                                    Id = Convert.ToInt32(DR[(int)enumQryProjectFields.user_id]),
+                                    FullName = (!DR.IsDBNull((int)enumQryProjectFields.full_name))
+                                            ? DR[(int)enumQryProjectFields.full_name].ToString().Trim()
+                                            : string.Empty, 
+                                },
                                 project_estimated_budget = (!DR.IsDBNull((int)enumQryProjectFields.project_estimated_budget))
                                             ? Convert.ToInt32(DR[(int)enumQryProjectFields.project_estimated_budget])
                                             : 0,
@@ -82,22 +91,16 @@ namespace STAGE._2023.TEST.DataLayer.DB
                                             : 0,
                                 project_estimated_duration = (!DR.IsDBNull((int)enumQryProjectFields.project_estimated_duration))
                                               ? DR[(int)enumQryProjectFields.project_estimated_duration].ToString().Trim()
-                                              : string.Empty,
-
-                                StatusProject = new StatusProject()
-
+                                              : string.Empty, 
+                                StatusProject = new StatusProject() 
                                 {
                                     id_StatusProject = (!DR.IsDBNull((int)enumQryProjectFields.id_StatusProject))
                                             ? Convert.ToInt32(DR[(int)enumQryProjectFields.id_StatusProject])
-                                            : 0,
-                                    
-
+                                            : 0, 
                                     StatusProject_name = (!DR.IsDBNull((int)enumQryProjectFields.StatusProject_name))
                                               ? DR[(int)enumQryProjectFields.StatusProject_name].ToString()
                                               : string.Empty,
-                                },
-
-
+                                }, 
                             });
                         }
                     }
@@ -147,9 +150,16 @@ namespace STAGE._2023.TEST.DataLayer.DB
                                 project_name = (!DR.IsDBNull((int)enumQryProjectFields.project_name))
                                               ? DR[(int)enumQryProjectFields.project_name].ToString().Trim()
                                               : string.Empty,
-                                project_module = (!DR.IsDBNull((int)enumQryProjectFields.project_module))
-                                              ? DR[(int)enumQryProjectFields.project_module].ToString().Trim()
-                                              : string.Empty,
+                                Module = new Module()
+                                {
+
+                                    module_id = Convert.ToInt32(DR[(int)enumQryProjectFields.module_id]),
+                                    module_name = (!DR.IsDBNull((int)enumQryProjectFields.module_name))
+                                                  ? DR[(int)enumQryProjectFields.module_name].ToString().Trim()
+                                                  : string.Empty,
+
+
+                                },
 
                                 project_version = (!DR.IsDBNull((int)enumQryProjectFields.project_version))
                                             ? DR[(int)enumQryProjectFields.project_version].ToString().Trim()
@@ -159,9 +169,16 @@ namespace STAGE._2023.TEST.DataLayer.DB
                                               ? DR[(int)enumQryProjectFields.project_description].ToString().Trim()
                                               : string.Empty,
 
-                                project_leader = (!DR.IsDBNull((int)enumQryProjectFields.project_leader))
-                                              ? DR[(int)enumQryProjectFields.project_leader].ToString().Trim()
-                                             : string.Empty,
+                                User = new User()
+                                {
+
+                                    Id = Convert.ToInt32(DR[(int)enumQryProjectFields.user_id]),
+                                    FullName = (!DR.IsDBNull((int)enumQryProjectFields.full_name))
+                                            ? DR[(int)enumQryProjectFields.full_name].ToString().Trim()
+                                            : string.Empty,
+
+
+                                },
                                 project_estimated_budget = Convert.ToInt32(DR[(int)enumQryProjectFields.project_estimated_budget]),
                                 project_total_amount = Convert.ToInt32(DR[(int)enumQryProjectFields.project_total_amount]),
                                 project_estimated_duration = (!DR.IsDBNull((int)enumQryProjectFields.project_estimated_duration))
@@ -224,15 +241,15 @@ namespace STAGE._2023.TEST.DataLayer.DB
                         command.Parameters.Add("@project_version", SqlDbType.VarChar);
                         command.Parameters["@project_version"].Value = project.project_name;
 
-                        command.Parameters.Add("@project_module", SqlDbType.VarChar);
-                        command.Parameters["@project_module"].Value = project.project_module;
+                        command.Parameters.Add("@module_id", SqlDbType.Int);
+                        command.Parameters["@module_id"].Value = project.module_id;
 
 
                         command.Parameters.Add("@project_description", SqlDbType.VarChar);
                         command.Parameters["@project_description"].Value = project.project_description;
 
-                        command.Parameters.Add("@project_leader", SqlDbType.VarChar);
-                        command.Parameters["@project_leader"].Value = project.project_leader;
+                        command.Parameters.Add("@user_id", SqlDbType.Int);
+                        command.Parameters["@user_id"].Value = project.User.Id;
 
                         command.Parameters.Add("@project_estimated_budget", SqlDbType.Int);
                         command.Parameters["@project_estimated_budget"].Value = project.project_estimated_budget;
@@ -278,8 +295,8 @@ namespace STAGE._2023.TEST.DataLayer.DB
                         command.Parameters.Add("@project_name", SqlDbType.VarChar);
                         command.Parameters["@project_name"].Value = project.project_name;
 
-                        command.Parameters.Add("@project_module", SqlDbType.VarChar);
-                        command.Parameters["@project_module"].Value = project.project_module;
+                        command.Parameters.Add("@module_id", SqlDbType.Int);
+                        command.Parameters["@module_id"].Value = project.module_id;
 
                         command.Parameters.Add("@project_version", SqlDbType.VarChar);
                         command.Parameters["@project_version"].Value = project.project_name;
@@ -288,8 +305,8 @@ namespace STAGE._2023.TEST.DataLayer.DB
                         command.Parameters.Add("@project_description", SqlDbType.VarChar);
                         command.Parameters["@project_description"].Value = project.project_description;
 
-                        command.Parameters.Add("@project_leader", SqlDbType.VarChar);
-                        command.Parameters["@project_leader"].Value = project.project_leader;
+                        command.Parameters.Add("@user_id", SqlDbType.Int);
+                        command.Parameters["@user_id"].Value = project.User.Id;
 
                         command.Parameters.Add("@project_estimated_budget", SqlDbType.Int);
                         command.Parameters["@project_estimated_budget"].Value = project.project_estimated_budget;

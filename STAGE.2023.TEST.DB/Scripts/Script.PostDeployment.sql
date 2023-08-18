@@ -12,10 +12,10 @@ BEGIN
 	INSERT INTO dbo.[app_user]([role_id], [user_full_name], [user_login], [user_password], 
 						       [user_email], [user_phone], [user_is_active], [user_birth_date], [user_creation_date]) 
 	VALUES 
-		                       (1, N'ADMINSTRATOR', N'ADMIN', N'1w7USZx2lywZENk8S0Cv8g==', N'admin@mail.com', N'00 00000000', 1, '19700101', GETDATE())
+		                       (1, N'ADMINSTRATOR', N'ADMIN', N'1w7USZx2lywZENk8S0Cv8g==', N'admin@mail.com', N'00 00000000', 1, '19700101', GETDATE()),
+							   (2, N'DEVELOPER', N'DEV', N'1w7USZx2lywZENk8S0Cv8g==', N'dev@mail.com', N'00 00000000', 1, '19700101', GETDATE())
 END
-
-
+ 
 IF NOT EXISTS (SELECT 1 FROM dbo.[def_type_dev])
 BEGIN
 	INSERT INTO dbo.[def_type_dev]([id_TypeDev], [TypeDev_name]) 
@@ -66,18 +66,28 @@ BEGIN
 		
 END
 
-IF NOT EXISTS (SELECT 1 FROM dbo.[def_project] )
+IF NOT EXISTS (SELECT 1 FROM dbo.[def_module] )
 BEGIN
-	INSERT INTO dbo.[def_project]([id_project],[project_name],[project_module] ,[project_version] ,[project_description],[project_leader],[project_estimated_budget],[project_total_amount],[project_estimated_duration],[id_StatusProject] ) 
+	INSERT INTO dbo.[def_module]([module_id],[module_name])
 	VALUES 
-		(1, 'CHANNEL_MANAGER','Myhotix' , '3.2.0' , 'NONE' ,'Boudagga Marwen','333844','584466','3months',1)
+		(1, 'HNG'),
+		(2, 'MyHotix'),
+		(3, 'HH')
 		
 END
 
-IF NOT EXISTS (SELECT 1 FROM dbo.[def_module] )
+IF NOT EXISTS (SELECT 1 FROM dbo.[def_project] )
 BEGIN
-	INSERT INTO dbo.[def_module]([dev_task_id],[module_name],[id_project] ,[id_TypeDev] ,[module_details],[posting_date],[posted_by],[due_date],[id_PriorityDev],[id_StatusDev],[user_id],[module_notes])
+	INSERT INTO dbo.[def_project]([id_project],[project_name],[module_id] ,[project_version] ,[project_description],[user_id],[project_estimated_budget],[project_total_amount],[project_estimated_duration],[id_StatusProject] ) 
 	VALUES 
-		(1, 'MyHotix',1,3,'D_EDGE','14082023','MB','17092023',4,2,2,'None')
+		(1, 'CHANNEL_MANAGER',2 , '3.2.0' , 'NONE' ,1,'333844','584466','3months',1)
+		
+END
+
+IF NOT EXISTS (SELECT 1 FROM dbo.[def_dev_task] )
+BEGIN
+	INSERT INTO dbo.[def_dev_task]([dev_task_id],[id_project],[id_TypeDev],[details],[source],[posting_date],[posted_by],[due_date],[id_PriorityDev],[id_StatusDev],[user_id],[notes])
+	VALUES 
+		(1,1,1,'none','Mouradi hotel','18072023','MB','20082023',1,1,2,'no note')
 		
 END

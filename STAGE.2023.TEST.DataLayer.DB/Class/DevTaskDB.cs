@@ -38,7 +38,7 @@ namespace STAGE._2023.TEST.DataLayer.DB
 
         }
         #endregion
-        public IEnumerable<DevTask> GetAll(int dev_task_id)
+        public IEnumerable<DevTask> GetAll(int ModID, int ProjID)
         {
             Entities.DevTasks Ret = new Entities.DevTasks();
             SqlDataReader DR = null;
@@ -51,8 +51,8 @@ namespace STAGE._2023.TEST.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add("dev_task_id", SqlDbType.Int);
-                        command.Parameters["dev_task_id"].Value = dev_task_id;
+                        command.Parameters.Add("@id_project", SqlDbType.Int);
+                        command.Parameters["@id_project"].Value = ProjID;
 
                         conn.Open();
                         DR = command.ExecuteReader();

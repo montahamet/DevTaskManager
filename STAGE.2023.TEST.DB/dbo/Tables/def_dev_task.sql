@@ -1,0 +1,20 @@
+﻿CREATE TABLE [dbo].[def_dev_task]
+(
+	[dev_task_id] int  NOT NULL PRIMARY KEY,
+	[id_project] INT NOT NULL, 
+	CONSTRAINT [FK_dev_task_To_project] FOREIGN KEY ([id_project]) REFERENCES [def_project]([id_project]),
+	[id_TypeDev] INT NOT NULL, 
+	CONSTRAINT [FK_module_To_type_dev] FOREIGN KEY ([id_TypeDev]) REFERENCES [def_type_dev]([id_TypeDev]),
+	[details] VARCHAR(500) NULL,
+	[source] VARCHAR(100) NULL,
+	[posting_date] VARCHAR(50) NULL,
+	[posted_by] VARCHAR(100) NULL,
+	[due_date] VARCHAR(50) NULL,
+	[id_PriorityDev] INT NOT NULL, 
+	CONSTRAINT [FK_dev_task_To_priority_dev] FOREIGN KEY ([id_PriorityDev]) REFERENCES [def_priority_dev]([id_PriorityDev]),
+	[id_StatusDev] INT NOT NULL, 
+	CONSTRAINT [FK_dev_task_To_status_dev] FOREIGN KEY ([id_StatusDev]) REFERENCES [def_status_dev]([id_StatusDev]),
+	[user_id] INT NOT NULL, 
+    CONSTRAINT [FK_dev_task_To_user_] FOREIGN KEY ([user_id]) REFERENCES [app_user]([user_id]),
+	[notes] VARCHAR(500) NULL,
+)

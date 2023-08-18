@@ -33,5 +33,6 @@ namespace STAGE._2023.TEST.Entities
         public StatusDev StatusDev { get; set; }
         public User User { get; set; }
         public string notes { get; set; }
+        public string FullName { get; set; }
     }
 }

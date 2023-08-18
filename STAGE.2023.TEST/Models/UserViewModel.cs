@@ -15,20 +15,20 @@ namespace STAGE._2023.TEST.Models
         public Entities.UserRole UserRole { get; set; }
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ"), MaxLength(20)]
+        [Required(ErrorMessage = "Complete this field"), MaxLength(20)]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         public string Login { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         //[RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Email is not valid.")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ"), MaxLength(8)]
+        [Required(ErrorMessage = "Complete this field"), MaxLength(8)]
         public string Phone { get; set; }
 
         public bool IsActive { get; set; }
@@ -39,7 +39,7 @@ namespace STAGE._2023.TEST.Models
 
         public DateTime CreationDate { get; set; }
 
-        [Required(ErrorMessage = "veuillez compléter ce champ")]
+        [Required(ErrorMessage = "Complete this field")]
         [Range(1, int.MaxValue, ErrorMessage = "Please enter valid Role")]
         public int UserRoleId { get; set; }
 

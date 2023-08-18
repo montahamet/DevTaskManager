@@ -14,9 +14,12 @@ namespace STAGE._2023.TEST.Models
 
         public Entities.Project Project { get; set; }
         public Entities.StatusProject StatusProject { get; set; }
-        public Entities.StatusProjects StatusProjects { get; set; }
+        public Entities.StatusProjects StatusProjects { get; set; } 
+        public Entities.Module Module { get; set; }
+        public Entities.Modules Modules { get; set; }
+        public Entities.Users Users { get; set; }
 
-        
+
         public int id_project { get; set; }
 
         [Required(ErrorMessage = "Complete this field")]
@@ -24,7 +27,7 @@ namespace STAGE._2023.TEST.Models
 
 
         [Required(ErrorMessage = "Complete this field")]
-        public string project_module { get; set; }
+        public int module_id { get; set; }
 
 
         [Required(ErrorMessage = "Complete this field")]
@@ -34,7 +37,7 @@ namespace STAGE._2023.TEST.Models
         public string project_description { get; set; }
 
         [Required]
-        public string project_leader { get; set; }
+        public int id_user { get; set; }
 
         [Required]
         public decimal project_estimated_budget { get; set; }
@@ -49,7 +52,8 @@ namespace STAGE._2023.TEST.Models
         public int id_StatusProject { get; set; }
      
         public string StatusProject_name { get; set; }
-
+        public string module_name { get; set; }
+        public string FullName { get; set; }
     }
 }
 

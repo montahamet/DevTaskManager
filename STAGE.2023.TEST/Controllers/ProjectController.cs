@@ -11,15 +11,16 @@ using System.Reflection;
 using Microsoft.Extensions.Hosting;
 using System.IO;
 using Microsoft.CodeAnalysis;
+using System.Security.Cryptography;
 
 namespace STAGE._2023.TEST.Controllers
 {
     public class ProjectController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int ModID)
         {
             ProjectViewModel _Model = new ProjectViewModel();
-            _Model.Projects = Repository.Project.GetAll();
+            _Model.Projects = Repository.Project.GetAll(ModID);
             return View(_Model);
         }
 
@@ -30,6 +31,10 @@ namespace STAGE._2023.TEST.Controllers
             ProjectViewModel Model = new ProjectViewModel();
 
             Model.StatusProjects = Repository.Config.GetAllStatusProject();
+
+            Model.Modules = Repository.Module.GetAll();
+
+            Model.Users = Repository.User.GetAll();
 
             return View(Model);
         }
@@ -46,12 +51,12 @@ namespace STAGE._2023.TEST.Controllers
 
                             var project = new Entities.Project
                             {
-
+                                id_project = viewModel.id_project,
                                 project_name = viewModel.project_name,
-                                project_module = viewModel.project_module,
+                                Module = new Entities.Module() { module_id = viewModel.module_id },
                                 project_version = viewModel.project_version,
                                 project_description = viewModel.project_description,
-                                project_leader = viewModel.project_leader,
+                                User = new Entities.User() { Id = viewModel.id_user },
                                 project_estimated_budget = viewModel.project_estimated_budget,
                                 project_total_amount = viewModel.project_total_amount,
                                 project_estimated_duration = viewModel.project_estimated_duration,
@@ -79,6 +84,7 @@ namespace STAGE._2023.TEST.Controllers
         {
 
             var project = Repository.Project.Getone(id_project);
+            
 
 
             try
@@ -88,10 +94,10 @@ namespace STAGE._2023.TEST.Controllers
                 {
                     id_project = project.id_project,
                     project_name = project.project_name,
-                    project_module = project.project_module,
+                    Modules = Repository.Module.GetAll(),
                     project_version = project.project_version,
                     project_description = project.project_description,
-                    project_leader = project.project_leader,
+                    Users = Repository.User.GetAll(),
                     project_estimated_budget = project.project_estimated_budget,
                     project_total_amount = project.project_total_amount,
                     project_estimated_duration = project.project_estimated_duration,
@@ -110,8 +116,6 @@ namespace STAGE._2023.TEST.Controllers
 
         }
 
-
-
         [HttpPost]
         public IActionResult Edit(ProjectViewModel viewModel)
         {
@@ -125,10 +129,10 @@ namespace STAGE._2023.TEST.Controllers
                         {
                             id_project = viewModel.id_project,
                             project_name = viewModel.project_name,
-                            project_module = viewModel.project_module,
+                            Module = new Entities.Module() { module_id = viewModel.module_id },
                             project_version = viewModel.project_version,
                             project_description = viewModel.project_description,
-                            project_leader = viewModel.project_leader,
+                            User = new Entities.User() { Id = viewModel.id_user },
                             project_estimated_budget = viewModel.project_estimated_budget,
                             project_total_amount = viewModel.project_total_amount,
                             project_estimated_duration = viewModel.project_estimated_duration,
@@ -175,15 +179,15 @@ namespace STAGE._2023.TEST.Controllers
             Models.ProjectViewModel _Model = new Models.ProjectViewModel()
             {
                 id_project = project.id_project,
-                project_name = project.project_name,
-                project_module = project.project_module,
+                Module = project.Module,
+                project_name = project.project_name, 
                 project_version = project.project_version,
-                project_description = project.project_description,
-                project_leader = project.project_leader,
+                project_description = project.project_description, 
+                Project = project,
                 project_estimated_budget = project.project_estimated_budget,
                 project_total_amount = project.project_total_amount,
                 project_estimated_duration = project.project_estimated_duration,
-                StatusProjects = Repository.Config.GetAllStatusProject()
+                StatusProject = project.StatusProject
 
             };
             return View(_Model);

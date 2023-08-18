@@ -18,17 +18,17 @@ namespace STAGE._2023.TEST.Repository
             Module_DL = new ModuleDB();
         }
 
-        public static Entities.Modules GetAll(int id_project = -1)
+        public static Entities.Modules GetAll()
         {
             return (Module_DL != null)
-                   ? new Entities.Modules(Module_DL.GetAll(id_project))
+                   ? new Entities.Modules(Module_DL.GetAll())
                    : null;
         }
 
-        public static Entities.Module GetOneByID(int dev_task_id)
+        public static Entities.Module GetOneByID(int module_id)
         {
             return (Module_DL != null)
-                   ? Module_DL.GetOneByID(dev_task_id)
+                   ? Module_DL.GetOneByID(module_id)
                    : null;
         }
 
